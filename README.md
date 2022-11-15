@@ -1,4 +1,4 @@
-# mjhsieh.github.com
-http://mjhsieh.github.com
+# mjhsieh.github.io
+http://mjhsieh.github.io
 
 EOF
