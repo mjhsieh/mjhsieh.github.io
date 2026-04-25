@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/archive.css' | relative_url }}">
+</head>
+<body>
+
+<div id="banner">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title | default: "Mengjuei - Blog" }}</a></h1>
+    <span class="description">{{ site.description | default: "It is what it is." }}</span>
+</div>
+
+<div id="container">
+    <div id="content">
+        <div class="blog">
+            {{ content }}
+            
+            {% if page.url == "/" %}
+                {% for post in site.posts %}
+                    <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
+                    <div class="blogbody">
+                        <h3 class="title">{{ post.title }}</h3>
+                        {{ post.excerpt }}
+                        <div class="posted">Posted by {{ post.author | default: "mjhsieh" }} at {{ post.date | date: "%H:%M" }} | <a href="{{ post.url | relative_url }}">Permalink</a></div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="links">
+        <div class="sidetitle">Profiles</div>
+        <div class="side">
+            <a href="{{ '/about.html' | relative_url }}">About this site</a><br />
+            <a href="{{ '/CV.html' | relative_url }}">Résumé</a><br />
+            <a href="{{ '/publications.html' | relative_url }}">Publication</a><br />
+            <a href="{{ '/projects.html' | relative_url }}">Project</a><br />
+            <a href="https://www.flickr.com/photos/mjhsieh/">My Flickr</a><br />
+            <a rel="me" href="https://g0v.social/@mjhsieh">Mastodon</a>
+        </div>
+
+        <div class="sidetitle">Archives</div>
+        <div class="side">
+            {% for category in site.categories %}
+                ★ <a href="{{ '/category/' | append: category[0] | relative_url }}">{{ category[0] }} ({{ category[1].size }})</a><br />
+            {% endfor %}
+        </div>
+
+        <div class="sidetitle">Recent Posts</div>
+        <div class="side">
+            {% for post in site.posts limit:5 %}
+                ★ <a href="{{ post.url | relative_url }}">{{ post.title }}</a><br />
+            {% endfor %}
+        </div>
+
+        <div class="sidetitle">My Link</div>
+        <div class="side" style="overflow: auto; height:200px;">
+            <div style="border-bottom:1px solid #EEE;">★ <a href="https://g0v.social/@mjhsieh">Mastodon</a></div>
+            <div style="border-bottom:1px solid #EEE;">★ <a href="http://www.flickr.com/photos/mjhsieh/">Flickr</a></div>
+            <!-- Add more links here -->
+        </div>
+
+        <div class="sidetitle">Badges</div>
+        <div class="powered">
+            <a href="https://www.apple.com/safari/" title="safari">I use safari.</a><br />
+            <a href="https://www.apple.com/macosx/" title="MacOS X">MacOS X</a><br />
+            <a href="https://maps.google.com/maps?q=Taiwan" title="Taiwan is a country.">I am a Taiwanese</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
