@@ -2,3 +2,11 @@ title: Mengjuei - Blog
 description: It is what it is.
 author: mjhsieh
 theme: minima
+timezone: America/Los_Angeles
+
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "posts"
+#     values:
+#       layout: "post"
