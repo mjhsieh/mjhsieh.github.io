@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+</head>
+<body>
+
+<div id="container">
+  <div id="banner">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <span class="description">{{ site.description }}</span>
+  </div>
+
+  <div id="content">
+    <div class="blog">
+      <h2 class="date">{{ page.date | date: "%B %d, %Y" }}</h2>
+
+      <div class="blogbody">
+        <h3 class="title">{{ page.title }}</h3>
+        
+        <div class="entry-content">
+          {{ content }}
+        </div>
+
+        <div class="posted">
+          Posted by {{ page.author | default: site.author }} at {{ page.date | date: "%B %d, %Y %I:%M %p" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

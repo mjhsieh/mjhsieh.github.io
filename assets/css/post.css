@@ -1,0 +1,86 @@
+body {
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 20px;
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+}
+
+a:link, a:visited {
+    color: #006699;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+#banner {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#banner h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #DDD;
+}
+
+#banner h1 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.description {
+    font-size: 11px;
+    color: #666;
+}
+
+.date {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #999;
+    border-top: 1px solid #EEE;
+    margin-top: 30px;
+    padding-top: 5px;
+}
+
+.blogbody {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 18px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.posted {
+    font-size: 10px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.entry-content {
+    margin-top: 15px;
+}
+
+.entry-content p {
+    margin-bottom: 1.5em;
+}
+
+@media (max-width: 640px) {
+    #container {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}
