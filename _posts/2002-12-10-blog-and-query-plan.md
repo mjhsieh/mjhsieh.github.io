@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "Blog and Query Plan"
 date: 2002-12-10 16:28:00 -0800
-categories: [archives]
 ---
 
 在躲同學的[文章](https://web.archive.org/web/20070710104035/http://zhyz.net/archives/000145.html "什麼是 blog?")中提到許多歷史, 如: ......
