@@ -21,7 +21,17 @@
             {{ content }}
 
             {% if page.url == "/" %}
-              {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+              {% for post in site.posts limit:5 %}
+                <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
+                <div class="blogbody">
+                    <h3 class="title">{{ post.title }}</h3>
+                    {{ post.excerpt }}
+                    <div class="posted">Posted by {{ post.author | default: "mjhsieh" }} at {{ post.date | date: "%H:%M" }} | <a href="{{ post.url | relative_url }}">Permalink</a></div>
+                </div>
+              {% endfor %}
+              <hr />
+              {% assign older_posts = site.posts | offset: 5 %}
+              {% assign postsByYear = older_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
               {% for year in postsByYear %}
                 <h3>{{ year.name }}</h3>
                 <ul>
