@@ -70,5 +70,4 @@ date: {date_str} {time_str} -0800
     print(f"Converted: {filename}")
 
 if __name__ == "__main__":
-    archive_url = "https://web.archive.org/web/20070710104035/http://apple.sysbio.info/~mjhsieh/archives/000020.html"
-    convert_archive_to_jekyll(archive_url)
+    convert_local_html_to_jekyll("input.html")
