@@ -4,9 +4,8 @@ author: mjhsieh
 theme: minima
 timezone: America/Los_Angeles
 
-# defaults:
-#   - scope:
-#       path: ""
-#       type: "posts"
-#     values:
-#       layout: "post"
+plugins:
+  - jekyll-paginate
+
+paginate: 5          # Number of posts per page
+paginate_path: "/page:num/"
