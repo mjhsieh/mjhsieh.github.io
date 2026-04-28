@@ -3,9 +3,3 @@ description: It is what it is.
 author: mjhsieh
 theme: minima
 timezone: America/Los_Angeles
-
-plugins:
-  - jekyll-paginate
-
-paginate: 5          # Number of posts per page
-paginate_path: "/page:num/"
