@@ -29,7 +29,8 @@
                     <div class="posted">Posted by {{ post.author | default: "mjhsieh" }} at {{ post.date | date: "%H:%M" }} | <a href="{{ post.url | relative_url }}">Permalink</a></div>
                 </div>
               {% endfor %}
-              {% assign postsByYear = site.posts | offset: 5 | group_by_exp: "post", "post.date | date: '%Y'" %}
+              {% assign offsetposts = site.posts | offset: 5 %}
+              {% assign postsByYear = offsetposts | group_by_exp: "post", "post.date | date: '%Y'" %}
               {% for year in postsByYear %}
                 <h3>{{ year.name }}</h3>
                 <ul>
