@@ -7,4 +7,4 @@ date: 2003-01-09 19:53:00 -0800
 不知不覺就堆積了這麼多台灣買的文具.....  
 Most of them are made in Japan, some of them are made in Taiwan. Besides, we bought too many useless stationaries, we didn't know they are useless here in the United States.
 
-[![stationary.jpg](/web/20070710103924im_/http://apple.sysbio.info/~mjhsieh/images/stationary.jpg)]
+[![stationery.jpg](/assets/images/2003-01-09-stationery.jpg)]
