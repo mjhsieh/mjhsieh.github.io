@@ -11,6 +11,15 @@ def convert_local_html_to_jekyll(file_path):
 
     with open(file_path, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f.read(), 'html.parser')
+#def convert_archive_to_jekyll(url):
+#    import requests
+#    # 1. Fetch the content
+#    headers = {'User-Agent': 'Mozilla/5.0'}
+#    response = requests.get(url, headers=headers)
+#    if response.status_code != 200:
+#        print(f"Failed to fetch {url}")
+#        return
+#    soup = BeautifulSoup(response.text, 'html.parser')
 
     # 1. Extract Title
     # The title is within <h3 class="title">, but often includes category links
@@ -28,7 +37,7 @@ def convert_local_html_to_jekyll(file_path):
     time_str = "00:00:00"
 
     if posted_span:
-        match = re.search(r'([A-Za-z]+ \d{1,2}, \d{4}) (\d{2}:\d{2} [APM]{2})', posted_span.text)
+        match = re.search(r'([A-Za-z]+ {1,2}\d{1,2}, \d{4}) (\d{2}:\d{2} [APM]{2})', posted_span.text)
         if match:
             date_raw = match.group(1)
             time_raw = match.group(2)
@@ -69,5 +78,8 @@ date: {date_str} {time_str} -0800
 
     print(f"Converted: {filename}")
 
+#if __name__ == "__main__":
+#    archive_url = "https://web.archive.org/web/20070225205649/http://apple.sysbio.info/~mjhsieh/archives/000015.html"
+#    convert_archive_to_jekyll(archive_url)
 if __name__ == "__main__":
     convert_local_html_to_jekyll("input.html")

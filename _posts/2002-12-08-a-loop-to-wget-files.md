@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A csh loop to wget files"
-date: 2002-12-10 00:00:00 -0800
+date: 2002-12-08 03:35:00 -0800
 ---
 
 Well, in case I forget how to write csh script...  

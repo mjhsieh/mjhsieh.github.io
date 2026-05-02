@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creating file with 'heredoc'"
-date: 2002-12-10 00:00:00 -0800
+date: 2002-12-07 19:54:00 -0800
 ---
 
 This is how I creat file with template in a shellscript.  
