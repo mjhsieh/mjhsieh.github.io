@@ -1,17 +1,13 @@
 import os
 import re
+import sys
+import argparse
+import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
 
-def convert_local_html_to_jekyll(file_path):
-    if not os.path.exists(file_path):
-        print(f"File {file_path} not found.")
-        return
-
-    with open(file_path, 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f.read(), 'html.parser')
-
+def convert_soup_to_jekyll(soup):
     # 1. Extract Title
     # The title is within <h3 class="title">, but often includes category links
     title_element = soup.find('h3', class_='title')
@@ -28,7 +24,7 @@ def convert_local_html_to_jekyll(file_path):
     time_str = "00:00:00"
 
     if posted_span:
-        match = re.search(r'([A-Za-z]+ \d{1,2}, \d{4}) (\d{2}:\d{2} [APM]{2})', posted_span.text)
+        match = re.search(r'([A-Za-z]+ {1,2}\d{1,2}, \d{4}) (\d{2}:\d{2} [APM]{2})', posted_span.text)
         if match:
             date_raw = match.group(1)
             time_raw = match.group(2)
@@ -69,5 +65,31 @@ date: {date_str} {time_str} -0800
 
     print(f"Converted: {filename}")
 
+def convert_local_html_to_jekyll(file_path):
+    if not os.path.exists(file_path):
+        print(f"File {file_path} not found.")
+        return
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        soup = BeautifulSoup(f.read(), 'html.parser')
+    convert_soup_to_jekyll(soup)
+
+def convert_url_to_jekyll(url):
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        convert_soup_to_jekyll(soup)
+    except Exception as e:
+        print(f"Error fetching {url}: {e}")
+
 if __name__ == "__main__":
-    convert_local_html_to_jekyll("input.html")
+    parser = argparse.ArgumentParser(description="Convert HTML (file or URL) to Jekyll post.")
+    parser.add_argument("input", help="The local HTML file or URL to convert.")
+    args = parser.parse_args()
+
+    if args.input.startswith("http://") or args.input.startswith("https://"):
+        convert_url_to_jekyll(args.input)
+    else:
+        convert_local_html_to_jekyll(args.input)
