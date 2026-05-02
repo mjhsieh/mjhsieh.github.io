@@ -78,6 +78,7 @@ a:hover {
 }
 
 .entry-content p {
+    padding: 10px;
     margin-bottom: 1.5em;
 }
 
