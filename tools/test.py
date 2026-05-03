@@ -12,6 +12,7 @@ def convert_soup_to_jekyll(soup):
     from pathlib import Path
     script_path = Path(__file__).resolve()
     posts_path = Path(os.path.dirname(script_path) + "/../_posts").resolve()
+    images_path = Path(os.path.dirname(script_path) + "/../assets/images").resolve()
     # 1. Extract Title
     # The title is within <h3 class="title">, but often includes category links
     title_element = soup.find('h3', class_='title')
@@ -53,9 +54,9 @@ def convert_soup_to_jekyll(soup):
             if img_src and archive_image_url_pattern.match(img_src):
                 try:
                     img_name = os.path.basename(img_src.split('/')[-1].split('?')[0])
-                    local_img_path = images_path / img_name
+                    local_img_path = f"{images_path}/{date_str}-{img_name}"
 
-                    if not local_img_path.exists():
+                    if not os.path.exists(local_img_path):
                         img_data = requests.get(f"https://web.archive.org{img_src}", headers={'User-Agent': 'Mozilla/5.0'}, stream=True)
                         img_data.raise_for_status()
                         with open(local_img_path, 'wb') as handler:
