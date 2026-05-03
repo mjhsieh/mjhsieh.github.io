@@ -8,6 +8,10 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as md
 
 def convert_soup_to_jekyll(soup):
+    # 0. Get the full path to the script file
+    from pathlib import Path
+    script_path = Path(__file__).resolve()
+    posts_path = Path(os.path.dirname(script_path) + "/../_posts").resolve()
     # 1. Extract Title
     # The title is within <h3 class="title">, but often includes category links
     title_element = soup.find('h3', class_='title')
@@ -48,7 +52,7 @@ def convert_soup_to_jekyll(soup):
 
     # 4. Generate Filename
     slug = re.sub(r'[^a-z0-9]+', '-', raw_title.lower()).strip('-')
-    filename = f"{date_str}-{slug}.md"
+    filename = f"{posts_path}/{date_str}-{slug}.md"
 
     # 5. Construct Jekyll Output
     jekyll_content = f"""---
