@@ -5,7 +5,7 @@ date: 2003-01-11 21:30:00 -0800
 ---
 
 (Updated / 更動的部份已儲存。)  
-[![Chimera](/assets/images/chimera.jpg)](https://web.archive.org/web/20070222025131/http://www.mozilla.org/projects/chimera/ "Chimera") v.s. [![Safari](/assets/images/safari.jpg)](https://web.archive.org/web/20070222025131/http://www.apple.com/safari/ "Safari")  
+[![Chimera](/assets/images/2003-01-11-chimera.jpg)](https://web.archive.org/web/20070222025131/http://www.mozilla.org/projects/chimera/ "Chimera") v.s. [![Safari](/assets/images/2003-01-11-safari.jpg)](https://web.archive.org/web/20070222025131/http://www.apple.com/safari/ "Safari")  
 You might not have this kind of problem; this problem only exists in the mind of MacOS X users. When Apples CEO [Jobs](https://web.archive.org/web/20070222025131/http://www.geocities.com/franktau/ "活祠堂") revealed Safari, I was thrilled. But after testing Safari for various websites, I gave it up. For me [KDE rendering engine](https://web.archive.org/web/20070222025131/http://developer.kde.org/documentation/library/kdeqt/kde3arch/khtml/ "KHTML") is still not comparable to [Gecko](https://web.archive.org/web/20070222025131/http://www.mozilla.org/newlayout/ "Mozilla Layout Engine")(I am not talking about the size. :D ). I hope I can see that happen someday. Chimera still rules.
 
 不過我對 Safari 寄予厚望, I think safari has a bright future by itself。
@@ -30,7 +30,7 @@ P.S.
 1. Why somebody in my lab got the underground news about safari before the keynote?
 
 2. 這是從歐萊禮書店的廣告上擷取的笑點，這樣就會覺得[林檎公司](https://web.archive.org/web/20070222025131/http://www.apple.com/ "Apple Fruits")不是很有創意的。  
-![O'reilly Joke](/assets/images/jokesafari.gif)
+![O'reilly Joke](/assets/images/2003-01-11-jokesafari.gif)
 
 3. 為了區區的 Navigator 上的地圖, 日本人才稍為抱怨那個只有美洲大陸，果然一戰成名，一堆人跑出來打仗，真是吃飽了沒事幹。殺發力上面也有個地圖，恰巧也還是美洲大陸，我們等著瞧吧。  
 我並不是說誰對誰錯，只是情勢看起來如果沒有很好的英文表達能力的話，人家都是用有色的眼光在看。

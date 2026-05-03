@@ -64,7 +64,7 @@ def convert_soup_to_jekyll(soup):
                                 handler.write(chunk)
                         print(f"Downloaded image: {local_img_path}")
 
-                    img.attrs['src'] = f"/assets/images/{img_name}" # Update src to local path
+                    img.attrs['src'] = f"/assets/images/{date_str}-{img_name}" # Update src to local path
                 except requests.exceptions.RequestException as e:
                     print(f"Error downloading image {img_src}: {e}")
                 except Exception as e:
