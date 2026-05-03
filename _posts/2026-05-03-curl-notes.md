@@ -1,5 +1,5 @@
 ---
-title: dkms might not be built correctly post-apt-upgrade
+title: notes about curl loop
 date: 2026-05-03 10:34:00 -0800
 ---
 Just in case I don't remember this:
