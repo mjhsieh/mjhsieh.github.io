@@ -46,6 +46,28 @@ def convert_soup_to_jekyll(soup):
         if content_div.find('span', class_='posted'):
             content_div.find('span', class_='posted').decompose()
 
+        # Download and replace image URLs
+        for img in content_div.find_all('img'):
+            img_src = img.get('src')
+            if img_src and archive_image_url_pattern.match(img_src):
+                try:
+                    img_name = os.path.basename(img_src.split('/')[-1].split('?')[0])
+                    local_img_path = images_path / img_name
+
+                    if not local_img_path.exists():
+                        img_data = requests.get(img_src, headers={'User-Agent': 'Mozilla/5.0'}, stream=True)
+                        img_data.raise_for_status()
+                        with open(local_img_path, 'wb') as handler:
+                            for chunk in img_data.iter_content(chunk_size=8192):
+                                handler.write(chunk)
+                        print(f"Downloaded image: {local_img_path}")
+
+                    img.attrs['src'] = f"/assets/images/{img_name}" # Update src to local path
+                except requests.exceptions.RequestException as e:
+                    print(f"Error downloading image {img_src}: {e}")
+                except Exception as e:
+                    print(f"An unexpected error occurred while processing image {img_src}: {e}")
+
         markdown_body = md(str(content_div), heading_style="ATX").strip()
     else:
         markdown_body = "No content found."
