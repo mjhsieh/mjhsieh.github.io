@@ -17,6 +17,14 @@ a:hover {
     text-decoration: underline;
 }
 
+code, pre {
+    font-family: 'Andale Mono', Courier, monospace;
+    letter-spacing: -1px;
+    border: 1px dashed #EEE;
+    margin: 10px;
+    background: #B5FFD5;
+}
+
 #container {
     width: 600px;
     margin: 0 auto;

@@ -1,6 +1,6 @@
 ---
-title: dkms might not be built correctly post-apt-upgrade
-date: May  1, 2026 13:00:00 -08:00
+title: "dkms might not be built correctly post-apt-upgrade"
+date: 2026-05-01 13:00:00 -0800
 ---
 Not just ubuntu, debian also has similar issue that after a big upgrade through
 apt upgrade, you might not get the link to the right version of kernel header.
