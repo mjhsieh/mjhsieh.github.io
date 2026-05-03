@@ -79,14 +79,23 @@ def convert_local_html_to_jekyll(file_path):
     convert_soup_to_jekyll(soup)
 
 def convert_url_to_jekyll(url):
+    # Regex to match the desired Internet Archive URL pattern
+    archive_url_pattern = re.compile(r"^https://web.archive.org/web/\d{14}/http://apple\.sysbio\.info/~mjhsieh/archives/.*$")
+
+    if not archive_url_pattern.match(url):
+        print(f"Error: URL '{url}' does not match the required Internet Archive pattern.")
+        return
+
     headers = {'User-Agent': 'Mozilla/5.0'}
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
         convert_soup_to_jekyll(soup)
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching {url}: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert HTML (file or URL) to Jekyll post.")
