@@ -1,6 +1,6 @@
 ---
 title: Abbreviations in a Catering Context
-date: 2026-05-18 10:00:00 -0800
+date: 2026-05-18 10:16:00 -0800
 ---
 Over the years, I've been puzzled by dietary abbreviations displayed in cafes or during events. Here are some common ones:
 
