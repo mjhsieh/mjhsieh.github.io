@@ -8,6 +8,12 @@ Go check GEMINI.md
 
 ## Recent Changes
 
+### 2025-05-28: Reorg and Retrofit Gemini-Cli old knowledge about tumblr
+
+- **Change**
+    - Renaming test.py to mt-archive-scrap.py
+    - Fix tumblr-scrap.py
+
 ### 2026-05-03: Fix hallucinated pseudo code from Gemini-Cli
 
 - **Change**:
