@@ -27,7 +27,7 @@ def convert_soup_to_jekyll(soup, url):
 
     # 2. Extract Date
     # Tumblr often has date in <meta property="og:updated_time"> or script tags.
-    # For simplicity in this scrap script, we'll try to find common Tumblr date patterns 
+    # For simplicity in this scrap script, we'll try to find common Tumblr date patterns
     # or use current date as fallback if not found in meta.
     date_meta = soup.find('meta', property='article:published_time')
     if date_meta:
@@ -51,7 +51,7 @@ def convert_soup_to_jekyll(soup, url):
     # 3. Extract Content
     # Main content in Tumblr is often in <div class="post">, <div class="body">, or <article>
     content_div = soup.find('article') or soup.find('div', class_='post') or soup.find('div', class_='body')
-    
+
     if content_div:
         # Clean up unwanted elements (like date/type paragraphs that might be redundant)
         for p_tag in content_div.find_all('p', class_=('date', 'type')):
@@ -60,8 +60,11 @@ def convert_soup_to_jekyll(soup, url):
         # Remove anchor links from <h2> tags but keep the text
         for h2_tag in content_div.find_all('h2'):
             for a_tag in h2_tag.find_all('a'):
-                a_tag.unwrap()
-        
+                if title_element:
+                    h2_tag.decompose()
+                else:
+                    a_tag.unwrap()
+
         # Download and replace images
         for img in content_div.find_all('img'):
             img_src = img.get('src')
@@ -71,9 +74,9 @@ def convert_soup_to_jekyll(soup, url):
                     img_name = os.path.basename(img_src.split('?')[0])
                     if not img_name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
                         img_name += ".jpg" # Default extension
-                        
+
                     local_img_path = images_path / img_name
-                    
+
                     if not local_img_path.exists():
                         img_data = requests.get(img_src, headers={'User-Agent': 'Mozilla/5.0'}, stream=True)
                         img_data.raise_for_status()
@@ -81,7 +84,7 @@ def convert_soup_to_jekyll(soup, url):
                             for chunk in img_data.iter_content(chunk_size=8192):
                                 handler.write(chunk)
                         print(f"Downloaded image: {local_img_path}")
-                    
+
                     img.attrs['src'] = f"/assets/images/{img_name}"
                 except Exception as e:
                     print(f"Error downloading image {img_src}: {e}")
