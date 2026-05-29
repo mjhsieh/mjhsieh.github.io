@@ -57,13 +57,14 @@ def convert_soup_to_jekyll(soup, url):
         for p_tag in content_div.find_all('p', class_=('date', 'type')):
             p_tag.decompose()
 
-        # Remove anchor links from <h2> tags but keep the text
         for h2_tag in content_div.find_all('h2'):
+            # Remove anchor links from <h2> tags but keep the text
+            if h2_tag.get_text(strip=True) == raw_title:
+                h2_tag.decompose()
+                continue
+            # Remove anchor links from <h2> tags but keep the text
             for a_tag in h2_tag.find_all('a'):
-                if title_element:
-                    h2_tag.decompose()
-                else:
-                    a_tag.unwrap()
+                a_tag.unwrap()
 
         # Download and replace images
         for img in content_div.find_all('img'):
