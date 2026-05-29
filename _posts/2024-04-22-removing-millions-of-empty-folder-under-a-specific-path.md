@@ -21,4 +21,5 @@ while (readdir F) {
     $i++;
 }
 print "$i directories identified under $b\n";
+```
 
