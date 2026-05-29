@@ -4,8 +4,6 @@ title: "Removing millions of empty folder under a specific path"
 date: 2024-04-22 23:56:52 -0800
 ---
 
-## Removing millions of empty folder under a specific path
-
 Well only happens on my Catalina box for some reason
 ```perl
 #!/usr/bin/perl
