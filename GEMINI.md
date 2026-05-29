@@ -13,6 +13,14 @@ This is a Jekyll-powered blog hosted on GitHub Pages.
 
 ## Recent Changes
 
+### 2026-05-03: Create tools/tumblr-scrap.py
+
+- **Change**: Added a new script `tools/tumblr-scrap.py` to copy entries from Tumblr to the blog.
+- **Implementation**: 
+    - Mirrored the style of `tools/test.py`.
+    - Implemented Tumblr-specific URL validation and HTML parsing (targeting `<article>` and meta tags).
+    - Includes automatic image downloading from Tumblr to `assets/images` and `src` path localizing.
+
 ### 2026-05-03: Enhance tools/test.py for Internet Archive Content
 
 - **Change**: Added URL validation for Internet Archive links and implemented image downloading/local path updating functionality in `tools/test.py`.
