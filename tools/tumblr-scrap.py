@@ -15,6 +15,8 @@ def convert_soup_to_jekyll(soup, url):
     images_path = Path(script_path.parent.parent / "assets/images").resolve()
     images_path.mkdir(parents=True, exist_ok=True)
 
+    MAX_SLUG_LENGTH = 50 # Define maximum length for the slug
+
     # 1. Extract Title
     # Tumblr titles are often in <h1 class="title"> or inferred from content
     title_element = soup.find('h1', class_='title') or soup.find('h2', class_='title')
@@ -98,6 +100,7 @@ def convert_soup_to_jekyll(soup, url):
     slug = re.sub(r'[^a-z0-9]+', '-', raw_title.lower()).strip('-')
     if not slug:
         slug = "tumblr-post"
+    slug = slug[:MAX_SLUG_LENGTH] # Truncate slug to limit filename length
     filename = f"{posts_path}/{date_str}-{slug}.md"
 
     # 5. Construct Jekyll Output
